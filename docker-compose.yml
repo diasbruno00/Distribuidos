@@ -1,0 +1,59 @@
+services:
+  server:
+    build:
+      context: ./app
+    ports:
+      - "50000:50000"
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+    environment:
+      - TZ=America/Sao_Paulo  # Substitua pelo seu fuso horário
+    networks:
+      - clock_net
+
+  client1:
+    build:
+      context: ./app
+    command: python cliente.py
+    depends_on:
+      - server
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+    environment:
+      - TZ=America/Sao_Paulo  # Substitua pelo seu fuso horário
+    networks:
+      - clock_net
+
+  client2:
+    build:
+      context: ./app
+    command: python cliente.py
+    depends_on:
+      - server
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+    environment:
+      - TZ=America/Sao_Paulo  # Substitua pelo seu fuso horário
+    networks:
+      - clock_net
+
+  client3:
+    build:
+      context: ./app
+    command: python cliente.py
+    depends_on:
+      - server
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+    environment:
+      - TZ=America/Sao_Paulo  # Substitua pelo seu fuso horário
+    networks:
+      - clock_net
+
+networks:
+  clock_net:
+    driver: bridge

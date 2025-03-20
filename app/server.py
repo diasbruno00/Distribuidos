@@ -5,7 +5,7 @@ import time
 import json
 from threading import Thread
 
-HOST = 'localhost'
+HOST = '0.0.0.0'
 PORT = 50000
 
 # Função para buscar a hora atualizada do servidor NTP
@@ -40,7 +40,7 @@ def conectarClientes(conn, ender):
             print(response_data)
 
             conn.send(json.dumps(response_data).encode())
-            time.sleep(10)
+            time.sleep(15)
     finally:
         conn.send(json.dumps(None).encode())
         conn.close()

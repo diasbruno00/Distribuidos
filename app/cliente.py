@@ -3,7 +3,7 @@ import time
 import json
 from datetime import datetime, timedelta
 
-HOST = 'localhost'
+HOST = 'server'
 PORT = 50000
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
